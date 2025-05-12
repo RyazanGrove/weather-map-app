@@ -56,6 +56,7 @@ Then start the app:
 ```
 npm run dev
 ```
+and go to http://localhost:5173/
 
 ## 📁 Project Structure
 ```
