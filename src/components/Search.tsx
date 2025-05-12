@@ -16,7 +16,7 @@ type Props = {
 
 const accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 
-export default function SearchBox({ onSelect }: Props) {
+function Search({ onSelect }: Props) {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<GeocodingFeature[]>([]);
 
@@ -69,3 +69,5 @@ export default function SearchBox({ onSelect }: Props) {
     </div>
   );
 }
+
+export default Search;
