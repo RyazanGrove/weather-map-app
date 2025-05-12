@@ -9,7 +9,15 @@ type Coordinates = {
   longitude: number;
 };
 
-type DataHourly = {
+export type ForecastApiResponse = {
+  hourly: {
+    temperature_2m: number[];
+    weathercode: number[];
+    time: string[];
+  };
+};
+
+export type DataHourly = {
   temperature: number;
   weatherCode: number;
   timeStamp: string;
@@ -18,15 +26,11 @@ type DataHourly = {
 async function fetchForecastData(latitude: number, longitude: number): Promise<DataHourly[]> {
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,weathercode&forecast_days=2`;
   const res = await fetch(url);
-  const data = await res.json();
+  const data: ForecastApiResponse = await res.json();
 
-  const times = data.hourly.time;
-  const temps = data.hourly.temperature_2m;
-  const codes = data.hourly.weathercode;
-
-  return times.map((time: string, i: number) => ({
-    temperature: temps[i],
-    weatherCode: codes[i],
+  return data.hourly.time.map((time, i) => ({
+    temperature: data.hourly.temperature_2m[i],
+    weatherCode: data.hourly.weathercode[i],
     timeStamp: time,
   }));
 }
@@ -35,8 +39,6 @@ function Popup({ latitude, longitude }: Coordinates) {
   const [temperatureUnit, setTemperatureUnit] = useState<TemperatureUnit>('C');
   const [forecasts, setForecasts] = useState<DataHourly[]>([]);
   const [loading, setLoading] = useState(true);
-
-  const currentHour = new Date().getHours();
 
   useEffect(() => {
     fetchForecastData(latitude, longitude)
@@ -57,6 +59,7 @@ function Popup({ latitude, longitude }: Coordinates) {
     );
   }
 
+  const currentHour = new Date().getHours();
   const items = [0, 3, 6]
     .map(offset => forecasts[currentHour + offset])
     .filter(Boolean);
