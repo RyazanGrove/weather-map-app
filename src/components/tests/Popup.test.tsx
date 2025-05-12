@@ -1,6 +1,6 @@
 import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import { vi } from 'vitest';
-import Popup, { type ForecastApiResponse } from './Popup';
+import Popup, { type ForecastApiResponse } from '../Popup';
 
 const mockForecast: ForecastApiResponse = {
   hourly: {

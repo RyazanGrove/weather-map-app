@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import ForecastDisplay from './ForecastDisplay';
+import ForecastDisplay from '../ForecastDisplay';
 
 test('should show \'Now\' for current forecast', ()=>{
     render(<ForecastDisplay temperature={10.4} weatherCode={2} current={true} time={"1995-12-17T18:00:00"} unit={"C"}></ForecastDisplay>)

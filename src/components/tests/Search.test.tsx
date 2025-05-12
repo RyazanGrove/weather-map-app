@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { vi } from 'vitest';
-import Search, { type GeocodingFeature } from './Search';
+import Search, { type GeocodingFeature } from '../Search';
 
 const mockFeatures: GeocodingFeature[] = [
   {

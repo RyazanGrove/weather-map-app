@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Map from './Map';
+import Map from '../Map';
 import { vi } from 'vitest';
 
 vi.mock('react-dom/client', async (importOriginal) => {
