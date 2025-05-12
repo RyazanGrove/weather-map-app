@@ -1,54 +1,98 @@
-# React + TypeScript + Vite
+# 🌤️ Weather Forecast App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a React + TypeScript application that lets users explore the weather forecast for any location using an interactive map powered by Mapbox and forecast data from Open-Meteo.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Users can:
 
-## Expanding the ESLint configuration
+* 🔍 Search for locations using a search bar (powered by Mapbox Geocoding API)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* 🗺️ Click on the map to select a location
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+* 🌡️ View hourly weather forecasts for the current time and +3 and +6 hours
+
+* 🔁 Toggle temperature units between Celsius and Fahrenheit
+
+## 📸 Preview
+
+![alt text](public/image.png)
+
+## 🛠️ Features
+
+* Interactive map using Mapbox GL JS
+
+* Search bar with autocomplete and location selection
+
+* Popup forecast display on map click or location search
+
+* Toggle temperature unit between °C and °F
+
+* Custom-styled popups with adjustable layout
+
+* Loading indicators with smooth UX
+
+* ⚡ Uses api.open-meteo.com which does not require an API key
+
+## Requirements
+* NodeJs v20.17.0+
+* React 19.1.0+
+* Project uses npm 10.8.2+
+
+## 📦 Installation
+
+```
+git clone https://github.com/RyazanGrove/weather-map-app.git
+cd weather-map-app
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Usage
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+First, modify .env file in the root adding your api key from MapBox (https://www.mapbox.com/):
+```
+VITE_MAPBOX_TOKEN= 'MAPBOX_API_KEY'
+```
+Then start the app:
+```
+npm run dev
+```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+## 📁 Project Structure
+```
+src/
+├── components/
+│   ├── Header.tsx
+│   ├── Map.tsx
+│   ├── MapWithSearch.tsx
+│   ├── Popup.tsx
+│   ├── SearchBox.tsx
+│   ├── ForecastDisplay.tsx
+│   ├── Spinner.tsx
+│   └── tests/...
+├── App.tsx
+└── main.tsx
+```
+
+## 🧪 Testing
+
+* Components tested using Vitest and @testing-library/react
+
+* Includes tests for:
+
+  * Map
+
+  * SearchBox
+
+  * Popup
+
+  * MapWithSearch
+
+  * Header
+
+  * ForecastDisplay
+
+Run tests with:
+
+```
+npm run test
 ```
