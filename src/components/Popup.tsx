@@ -65,7 +65,7 @@ function Popup({ latitude, longitude }: Coordinates) {
     <>
       <button
         onClick={toggleTemperatureUnit}
-        className="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 transition"
+        className="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 transition mb-2"
       >
         Show °{temperatureUnit === 'C' ? 'F' : 'C'}
       </button>
