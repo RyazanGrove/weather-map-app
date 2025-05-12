@@ -29,7 +29,6 @@ const getIconForCode = (code: number): string => {
 };
 
 function ForecastDisplay({temperature, weatherCode, time, unit, current }: WeatherDayForecast) {
-    console.log(temperature, weatherCode, current, time)
 
     const date = new Date(time);
     const hour = date.getHours();
